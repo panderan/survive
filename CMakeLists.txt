@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 
-PROJECT(Calculator)
+PROJECT(survive)
 
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 SET(CMAKE_AUTOMOC ON)
@@ -14,25 +14,30 @@ SET(CMAKE_C_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFALGS} -O2 -Wall")
 SET(CMAKE_C_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE})
 
-###################################################################
-# FIND_PACKAGE(Qt5Widgets)                                        #
-# FIND_PACKAGE(Qt5Gui)                                            #
-#                                                                 #
-# SET(SRCS                                                        #
-#             src/main.cpp                                        #
-#             src/calculator.cpp                                  #
-#             src/eval/expression_eval.c                          #
-#             )                                                   #
-# SET(HEADERS                                                     #
-#             src/calculator.h                                    #
-#             src/eval/expression_eval.h)                         #
-# SET(RESOURCES                                                   #
-#             resources/res.qrc)                                  #
-#                                                                 #
-# ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS} ${RESOURCES}) #
-# INCLUDE_DIRECTORIES(src/eval)                                   #
-# TARGET_LINK_LIBRARIES(${PROJECT_NAME} Qt5::Widgets Qt5::Gui)    #
-###################################################################
+FIND_PACKAGE(Qt5Widgets)
+FIND_PACKAGE(Qt5Gui)
+
+FIND_PACKAGE(PkgConfig)
+PKG_CHECK_MODULES(EIGEN REQUIRED eigen3)
+
+SET(SRCS
+            src/main.cpp
+            src/mainwindow.cpp
+            src/drawarea.cpp
+            src/survive.cpp
+            )
+SET(HEADERS
+            src/mainwindow.h
+            src/drawarea.h
+            src/survive.h)
+
+# SET(RESOURCES
+#             resources/res.qrc)
+
+ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS} ${RESOURCES})
+INCLUDE_DIRECTORIES(src)
+INCLUDE_DIRECTORIES(${EIGEN_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} Qt5::Widgets Qt5::Gui)
 
 ENABLE_TESTING()
 ADD_SUBDIRECTORY(test)
