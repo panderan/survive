@@ -12,5 +12,6 @@ class Survive {
         Survive(int width, int height);
         ~Survive(){}
 
-        void setAliveCell(int i, int j){}
+        void setAliveCell(int i, int j);
+        int calculatorOneCell(int i, int j);
 };
