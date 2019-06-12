@@ -5,6 +5,8 @@
 
 using namespace std;
 
+typedef Matrix<int, 6, 6> Matrix6i;
+
 class TestSur : public QObject
 {
     Q_OBJECT
@@ -19,7 +21,7 @@ class TestSur : public QObject
 void TestSur::TestConstructor()
 {
     Survive s(4,4);
-    QCOMPARE(s.data.isApprox(Matrix4i::Zero()), true);
+    QCOMPARE(s.data.isApprox(Matrix6i::Zero()), true);
 }
 
 void TestSur::TestOneStep()
@@ -27,7 +29,7 @@ void TestSur::TestOneStep()
     Survive s(4,4);
     s.setAliveCell(1,1);
     s.setAliveCell(1,2);
-    int ret = s.calculatorOneCell(1,2);
+    int ret = s.calculatorOneCell(1,1);
 
     QCOMPARE(ret, 2);
 }
