@@ -17,7 +17,7 @@ class TestSur : public QObject
 void TestSur::TestConstructor()
 {
     Survive s(4,4);
-    cout << s.data << endl;
+    QCOMPARE(s.data.isApprox(Matrix4i::Zero()), true);
 }
 
 
