@@ -12,6 +12,7 @@ class TestSur : public QObject
     private slots:
         void TestConstructor();
         void TestOneStep();
+        void TestTwoStep();
 };
 
 
@@ -28,9 +29,24 @@ void TestSur::TestOneStep()
     s.setAliveCell(1,2);
     int ret = s.calculatorOneCell(1,2);
 
-    QCOMPARE(ret, 1);
+    QCOMPARE(ret, 2);
 }
+void TestSur::TestTwoStep()
+{
+    Survive s(4,4);
+    s.setAliveCell(2,1);
+    s.setAliveCell(2,2);
+    s.setAliveCell(2,3);
+    s.setAliveCell(3,2);
+    s.setAliveCell(3,3);
+    Survive o(4,4);
+    s.setAliveCell(1,2);
+    s.setAliveCell(2,1);
+    s.setAliveCell(2,3);
+    s.setAliveCell(3,3);
 
+    /*QCOMPARE(o.isApprox(data.block<4,4>(1,1)), true); */
+}
 
 QTEST_MAIN(TestSur)
 #include "survive_test.moc"

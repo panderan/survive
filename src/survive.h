@@ -14,4 +14,5 @@ class Survive {
 
         void setAliveCell(int i, int j);
         int calculatorOneCell(int i, int j);
+        void calculatorNextStep();
 };
