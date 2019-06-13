@@ -3,6 +3,8 @@
 
 using namespace std;
 
+Survive gSur;
+
 Survive::Survive(int width, int height)
 {
     data = MatrixXi::Zero(width+2, height+2);
@@ -13,13 +15,17 @@ void Survive::setAliveCell(int i, int j)
     data(i,j) = 1;
 }
 
+void Survive::setSize(int width, int height)
+{
+    data = MatrixXi::Zero(width+2, height+2);
+}
+
 int Survive::calculatorOneCell(int i, int j)
 {
     MatrixXi datac;
     
     datac=data.block<3,3>(i-1,j-1);
 
-//    cout << "data-c :" << endl << datac << endl;
     MatrixXi model(3,3);
     model << 1,1,1,
             1,0,1,
@@ -57,4 +63,25 @@ void Survive::calculatorNextTime()
 
     data = newdata;
 }
+
+int Survive::getStatus(int i, int j)
+{
+    return data(i,j);
+}
+
+int Survive::getWidth()
+{
+    return data.rows()-2;
+}
+
+int Survive::getHeight()
+{
+    return data.cols()-2;
+}
+
+bool Survive::isDeadWorld()
+{
+    return data.sum() == 0 ? true : false;
+}
+
 

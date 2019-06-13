@@ -26,11 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/main.cpp \
         src/mainwindow.cpp \
-    src/drawarea.cpp
+        src/drawarea.cpp \
+        src/survive.cpp
 
 HEADERS += \
         src/mainwindow.h \
-    src/drawarea.h
+        src/drawarea.h \
+        src/survive.cpp
 
 FORMS += \
         ui/mainwindow.ui
+
+INCLUDEPATH+=/usr/include/eigen3
+
+RESOURCES += \
+    res/res.qrc

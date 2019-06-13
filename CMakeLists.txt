@@ -31,8 +31,8 @@ SET(HEADERS
             src/drawarea.h
             src/survive.h)
 
-# SET(RESOURCES
-#             resources/res.qrc)
+SET(RESOURCES
+            res/res.qrc)
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS} ${RESOURCES})
 INCLUDE_DIRECTORIES(src)

@@ -2,6 +2,7 @@
 #define DRAWAREA_H
 
 #include <QWidget>
+#include "survive.h"
 
 class DrawArea : public QWidget
 {
