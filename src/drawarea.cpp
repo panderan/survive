@@ -13,7 +13,8 @@ void DrawArea::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     QImage bug(":/image/bug1.png");
-    QString helpstr = "Help message";
+    QImage welcome(":/image/welcome.png");
+    QString helpstr = "";
 
     int w = 0, h = 0;
     int squareWidth = 25;
@@ -22,7 +23,8 @@ void DrawArea::paintEvent(QPaintEvent *)
     h = gSur.getHeight();
 
     if (w == 0 || h == 0) {
-        painter.drawText(QRect(0,0,200,200), helpstr);
+        // painter.drawText(QRect(0,0,200,200), helpstr);
+        painter.drawImage(QRect(0, 0,711, 400), welcome);
         return;
     }
 
